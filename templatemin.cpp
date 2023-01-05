@@ -20,8 +20,6 @@ using namespace std;
 
 int MOD=1e9+7;      // Hardcoded, directly change from here for functions!
 
-
-
 // ================================== take ip/op like vector,pairs directly!==================================
 template<typename typC,typename typD> istream &operator>>(istream &cin,pair<typC,typD> &a) { return cin>>a.first>>a.second; }
 template<typename typC> istream &operator>>(istream &cin,vector<typC> &a) { for (auto &x:a) cin>>x; return cin; }
@@ -30,7 +28,6 @@ template<typename typC,typename typD> ostream &operator<<(ostream &cout,const ve
 template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a) { int n=a.size(); if (!n) return cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; return cout; }
 // ===================================END Of the input module ==========================================
 
-
 void solve(){
     int n=1,m=0;
     string s;
@@ -38,14 +35,18 @@ void solve(){
     vi v(n);
     cin>>v;
     
-    
 }
 
 int32_t main()
 {
+
+ #ifndef ONLINE_JUDGE
+    // freopen("input.txt", "r" , stdin);
+    // freopen("output.txt", "w", stdout);              // take input from the file and O/P on the console-- > more clarity!
+#endif
  
- ios_base::sync_with_stdio(false);
- cin.tie(NULL);
+ios_base::sync_with_stdio(false);
+cin.tie(NULL);
 
     int T = 1;
     cin >> T;
@@ -56,4 +57,3 @@ int32_t main()
     return 0;
 }
 
-	

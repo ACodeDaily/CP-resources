@@ -1,3 +1,5 @@
+<snippet>
+	<content><![CDATA[
 #include "bits/stdc++.h"
 #define int long long
 #define uint unsigned long long
@@ -99,6 +101,7 @@ int BinSearch(vector<int>& arr ,int lo,int hi, bool pos=1){      // pos means fi
     }
     return res;
 }
+
 // =====================================END of BinSearch Module=========================================
 /// ====================================PRIME utility ==================================================
 // int sz=1e6+5;
@@ -116,45 +119,24 @@ int BinSearch(vector<int>& arr ,int lo,int hi, bool pos=1){      // pos means fi
 // }
 // add SieveOfEratosthenes
 // add isPrime ad
-map<int,int> mp;
 bool isPrime(int n){
-    if(mp.count(n)) return mp[n];
     for(int i=2;i*i<=n;i++){
-        if(n%i==0)  return mp[n]=0;
+        if(n%i==0)  return 0;
     }
-    return mp[n]=1;
+    return 1;
 }
 
 /// ====================================PRIME utility ENDS here==================================================
 
-
 void solve(){
     int n=1,m=0;
+    string s;
     cin>>n;
-    multiset<int> fs;
-    int org=n;
-    if(isPrime(n)){         // no possibility for prime
-        cout<<"-1\n";
-        return;
-    }
+    vi v(n);
+    ${1:cin>>v;}
 
-    int f=2;
-    while(n>1 && fs.empty()){
-        if(n%f==0){
-            fs.insert(f);
-        }
-        f++;
-    }
-    int a=*fs.begin();
-    int b=1;
-    int c=org/a;
-    if((a!=c) && a*b*c>=n && (a*b*c)%n==0){
-        cout<<a<<" "<<b<<" "<<c<<"\n";
-        return;
-    }
-    cout<<"-1\n";return;
     
-    
+    // cout<<v<<"\n";
 }
 
 int32_t main()
@@ -169,7 +151,7 @@ int32_t main()
  cin.tie(NULL);
 
     int T = 1;
-    cin >> T;
+    ${2:cin >> T};
     while (T--)
     {
         solve();
@@ -177,3 +159,10 @@ int32_t main()
     return 0;
 }
 
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>use</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

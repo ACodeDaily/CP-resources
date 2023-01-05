@@ -100,6 +100,31 @@ int BinSearch(vector<int>& arr ,int lo,int hi, bool pos=1){      // pos means fi
     return res;
 }
 // =====================================END of BinSearch Module=========================================
+/// ====================================PRIME utility ==================================================
+// int sz=1e6+5;
+// bool PrimeSieve[1000005];   // 1e6+5
+// void buildSieve(){
+//     for(int i=2;i<=sz;i++)    PrimeSieve[i]=1;
+//     PrimeSieve[0]=0;// 
+//     PrimeSieve[1]=0;    // 1 is neither prime nor composite 
+//     for(int i=2;i<sz;i++){
+//         if(PrimeSieve[i]==0)    continue;       // the current number itself is composite 
+//         for(int j=2;j*i<sz;j++){
+//             PrimeSieve[i*j]=0;
+//         }
+//     }
+// }
+// add SieveOfEratosthenes
+// add isPrime ad
+bool isPrime(int n){
+    for(int i=2;i*i<=n;i++){
+        if(n%i==0)  return 0;
+    }
+    return 1;
+}
+
+/// ====================================PRIME utility ENDS here==================================================
+
 
 
 void solve(){
@@ -108,7 +133,7 @@ void solve(){
     cin>>n;
     vi v(n);
     cin>>v;
-    
+
     
     // cout<<v<<"\n";
 }

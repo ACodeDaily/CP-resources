@@ -1,0 +1,33 @@
+<snippet>
+	<content><![CDATA[
+// ==================================BINARY SEARCH MODULE=========================================
+bool poss(int mid,vector<int>& arr){        // evaludate the condition!
+    if(mid)   return mid;
+    return 1;
+}
+
+int BinSearch(vector<int>& arr ,int lo,int hi, bool pos=1){      // pos means find max ...
+    int res=-1;
+    while(lo<=hi){
+        int mid=(lo+hi+1)/2;
+        if(poss(mid,arr)){
+            res=mid;
+            if(pos)    lo=mid+1;
+            else hi=mid-1;
+        }
+        else{
+            if(pos)    hi=mid-1;
+            else lo=mid+1;
+        }
+    }
+    return res;
+}
+
+// =====================================END of BinSearch Module=========================================
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>binSnip</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

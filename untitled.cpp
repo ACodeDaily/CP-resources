@@ -33,19 +33,19 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 
 
 //==================================== compute higher powers with mod ===================================
-uint power(int x, int y, int p =  MOD)
+uint power(int x, int y,int p=1)
 {
     unsigned long long res = 1;
 
-    x = x % p;
+    x = x;
     while (y > 0)
     {
 
         if (y & 1)
-            res = (res * x) % p;
+            res = (res * x);
 
         y = y >> 1;
-        x = (x * x) % p;
+        x = (x * x);
     }
     return res;
 }
@@ -116,45 +116,16 @@ int BinSearch(vector<int>& arr ,int lo,int hi, bool pos=1){      // pos means fi
 // }
 // add SieveOfEratosthenes
 // add isPrime ad
-map<int,int> mp;
 bool isPrime(int n){
-    if(mp.count(n)) return mp[n];
     for(int i=2;i*i<=n;i++){
-        if(n%i==0)  return mp[n]=0;
+        if(n%i==0)  return 0;
     }
-    return mp[n]=1;
+    return 1;
 }
 
 /// ====================================PRIME utility ENDS here==================================================
 
-
 void solve(){
-    int n=1,m=0;
-    cin>>n;
-    multiset<int> fs;
-    int org=n;
-    if(isPrime(n)){         // no possibility for prime
-        cout<<"-1\n";
-        return;
-    }
-
-    int f=2;
-    while(n>1 && fs.empty()){
-        if(n%f==0){
-            fs.insert(f);
-        }
-        f++;
-    }
-    int a=*fs.begin();
-    int b=1;
-    int c=org/a;
-    if((a!=c) && a*b*c>=n && (a*b*c)%n==0){
-        cout<<a<<" "<<b<<" "<<c<<"\n";
-        return;
-    }
-    cout<<"-1\n";return;
-    
-    
 }
 
 int32_t main()
@@ -162,7 +133,7 @@ int32_t main()
 
  #ifndef ONLINE_JUDGE
     freopen("input.txt", "r" , stdin);
-    freopen("output.txt", "w", stdout);              // take input from the file and O/P on the console-- > more clarity!
+    // freopen("output.txt", "w", stdout);              // take input from the file and O/P on the console-- > more clarity!
 #endif
  
  ios_base::sync_with_stdio(false);

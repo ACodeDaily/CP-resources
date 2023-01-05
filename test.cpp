@@ -37,12 +37,18 @@ void solve(){
     cin>>n;
     vi v(n);
     cin>>v;
+
     
-    
+    // cout<<v<<"\n";
 }
 
 int32_t main()
 {
+
+ #ifndef ONLINE_JUDGE
+    freopen("input.txt", "r" , stdin);
+    freopen("output.txt", "w", stdout);              // take input from the file and O/P on the console-- > more clarity!
+#endif
  
  ios_base::sync_with_stdio(false);
  cin.tie(NULL);
@@ -56,4 +62,3 @@ int32_t main()
     return 0;
 }
 
-	
