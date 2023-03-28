@@ -20,6 +20,8 @@ using namespace std;
 
 int MOD=1e9+7;      // Hardcoded, directly change from here for functions!
 
+
+
 // ================================== take ip/op like vector,pairs directly!==================================
 template<typename typC,typename typD> istream &operator>>(istream &cin,pair<typC,typD> &a) { return cin>>a.first>>a.second; }
 template<typename typC> istream &operator>>(istream &cin,vector<typC> &a) { for (auto &x:a) cin>>x; return cin; }
@@ -30,13 +32,15 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 
 
 void solve(){
-    int n=1,m=0;
-    string s;
-    cin>>n;
-    // vi v(n);
-    // cin>>v;
-    s="adljbafdd";
-    cout<<n*2<<"\n";   
+    int x=0,y=0,n=0,m=0;
+    cin>>x>>y>>n>>m;
+    int cost2=y*n;
+    int buy1=((int)(n/m))*m+1;
+    int cost1=(buy1-1)*x;
+    if(buy1<n){
+        cost1+=(n-buy1)*(min(x,y));
+    }
+    cout<<min(cost1,cost2)<<"\n";
 }
 
 int32_t main()
@@ -54,4 +58,3 @@ int32_t main()
     return 0;
 }
 
-    

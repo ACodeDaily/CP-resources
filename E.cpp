@@ -21,17 +21,7 @@ using namespace std;
 int MOD=1e9+7;      // Hardcoded, directly change from here for functions!
 
 
-
-// ================================== take ip/op like vector,pairs directly!==================================
-template<typename typC,typename typD> istream &operator>>(istream &cin,pair<typC,typD> &a) { return cin>>a.first>>a.second; }
-template<typename typC> istream &operator>>(istream &cin,vector<typC> &a) { for (auto &x:a) cin>>x; return cin; }
-template<typename typC,typename typD> ostream &operator<<(ostream &cout,const pair<typC,typD> &a) { return cout<<a.first<<' '<<a.second; }
-template<typename typC,typename typD> ostream &operator<<(ostream &cout,const vector<pair<typC,typD>> &a) { for (auto &x:a) cout<<x<<'\n'; return cout; }
-template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a) { int n=a.size(); if (!n) return cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; return cout; }
-// ===================================END Of the input module ==========================================
-
-
-
+// ========================================MATH UTIL BEGINS==============================================
 //==================================== compute higher powers with mod ===================================
 uint power(int x, int y, int p =  MOD)
 {
@@ -75,76 +65,49 @@ uint nCr(int n, int r, int p=MOD)     // faster calculation..
 
     return (fac[n] * modInverse(fac[r], p) % p * modInverse(fac[n - r], p) % p) % p;
 }
+// ==================================== MATH UTIL ENDS=======================================================//
 
 
-// ==================================BINARY SEARCH MODULE=========================================
-bool poss(int mid,vector<int>& arr){        // evaludate the condition!
-    if(mid)   return mid;
-    return 1;
-}
 
-int BinSearch(vector<int>& arr ,int lo,int hi, bool pos=1){      // pos means find max ...
-    int res=-1;
-    while(lo<=hi){
-        int mid=(lo+hi+1)/2;
-        if(poss(mid,arr)){
-            res=mid;
-            if(pos)    lo=mid+1;
-            else hi=mid-1;
-        }
-        else{
-            if(pos)    hi=mid-1;
-            else lo=mid+1;
-        }
-    }
-    return res;
-}
-// =====================================END of BinSearch Module=========================================
-/// ====================================PRIME utility ==================================================
-// int sz=1e6+5;
-// bool PrimeSieve[1000005];   // 1e6+5
-// void buildSieve(){
-//     for(int i=2;i<=sz;i++)    PrimeSieve[i]=1;
-//     PrimeSieve[0]=0;// 
-//     PrimeSieve[1]=0;    // 1 is neither prime nor composite 
-//     for(int i=2;i<sz;i++){
-//         if(PrimeSieve[i]==0)    continue;       // the current number itself is composite 
-//         for(int j=2;j*i<sz;j++){
-//             PrimeSieve[i*j]=0;
-//         }
-//     }
-// }
-// add SieveOfEratosthenes
-// add isPrime ad
-bool isPrime(int n){
-    for(int i=2;i*i<=n;i++){
-        if(n%i==0)  return 0;
-    }
-    return 1;
-}
 
-/// ====================================PRIME utility ENDS here==================================================
 
+// ================================== take ip/op like vector,pairs directly!==================================
+template<typename typC,typename typD> istream &operator>>(istream &cin,pair<typC,typD> &a) { return cin>>a.first>>a.second; }
+template<typename typC> istream &operator>>(istream &cin,vector<typC> &a) { for (auto &x:a) cin>>x; return cin; }
+template<typename typC,typename typD> ostream &operator<<(ostream &cout,const pair<typC,typD> &a) { return cout<<a.first<<' '<<a.second; }
+template<typename typC,typename typD> ostream &operator<<(ostream &cout,const vector<pair<typC,typD>> &a) { for (auto &x:a) cout<<x<<'\n'; return cout; }
+template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a) { int n=a.size(); if (!n) return cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; return cout; }
+// ===================================END Of the input module ==========================================
 
 
 void solve(){
     int n=1,m=0;
-    string s;
-    cin>>n;
-    vi v(n);
-    cin>>v;
+    string a,b;
+    cin>>n>>a>>b;
+    if(a==b){
+        cout<<"0\n";
+        return;
+    }
+    int diff=0;
+    int mod=998244353;
+    for(int i=0;i<n;i++){
+        if(a[i]!=b[i])  diff++;
+    }
+    int A=1;
+    int B=1;
+    for(int i=n;i>1;i--){
+        int nInv=(n*modInverse(i,mod))%mod;
+        A=(nInv+(nInv-1+mod)*A)%mod;
+        if(i<=diff) B+=A;
+        B%=mod;
 
-    
-    // cout<<v<<"\n";
+    }
+    cout<<((A+1)*n+B-A+mod-1)%mod<<"\n";
+
 }
 
 int32_t main()
 {
-
- #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r" , stdin);
-    freopen("output.txt", "w", stdout);              // take input from the file and O/P on the console-- > more clarity!
-#endif
  
  ios_base::sync_with_stdio(false);
  cin.tie(NULL);
@@ -158,3 +121,4 @@ int32_t main()
     return 0;
 }
 
+    

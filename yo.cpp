@@ -30,74 +30,46 @@ template<typename typC,typename typD> ostream &operator<<(ostream &cout,const ve
 template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a) { int n=a.size(); if (!n) return cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; return cout; }
 // ===================================END Of the input module ==========================================
 
-
-// ========================================MATH UTIL BEGINS==============================================
-//==================================== compute higher powers with mod ===================================
-uint power(int x, int y, int p =  MOD)
-{
-    unsigned long long res = 1;
-
-    x = x % p;
-    while (y > 0)
-    {
-
-        if (y & 1)
-            res = (res * x) % p;
-
-        y = y >> 1;
-        x = (x * x) % p;
-    }
-    return res;
-}
-
-// =============================================================================================================
-
-uint modInverse(int n, int p=MOD)       // using fermats little thm. [p needs to be prime which is mostly the case as mod value generally is 1e9+7]
-{
-    return power(n, p - 2, p);
-}
-// can also derive this using extended euclidean... however this has a much simpler code....
-
-
-// =========================================Used to calculate nCr of higher values ===================================
-uint nCr(int n, int r, int p=MOD)     // faster calculation.. 
-{
-    if (n < r)
-        return 0;
-
-    if (r == 0)
-        return 1;
-        
-    vector<int> fac(n+1,0);
-    fac[0] = 1;
-    for (int i = 1; i <= n; i++)
-        fac[i] = (fac[i - 1] * i) % p;
-
-    return (fac[n] * modInverse(fac[r], p) % p * modInverse(fac[n - r], p) % p) % p;
-}
-// ==================================== MATH UTIL ENDS=======================================================//
-
 void solve(){
     int n=1,m=0;
     string s;
     cin>>n;
-    vi v(n);
+    vi a(n),b(n);
+    cin>>a>>b;
+    unordered_map<int,int> locsA,locsB;
+    for(int i=0;i<n;i++)    locsA[a[i]]=i,locsB[b[i]]=i;
+    // seperate case for 1 .. exclude one from the array-> mex is 1 
+    int res=1;      // the entire array case!
+    int left=min(locsA[1],locsB[1]),right=max(locsA[1],locsB[1]);
     
+    res+=(left)*(left+1)/2;
+    res+=(n-right-1)*(n-right)/2;
+    res+=max(0ll,(right-left-1)*(right-left)/2);
+
+    // cout<<res<<"\n";
+    for(int m=2;m<=n;m++){      // here m is MEX
+        int loc_left=min(locsA[m],locsB[m]);
+        int loc_right=max(locsA[m],locsB[m]);
+
+        if(loc_left>=right) res+=(left+1)*(loc_left-right);     //
+        else if(loc_right<=left) res+=(n-right)*(left-loc_right);
+        else if(loc_left<left && loc_right>right)   res+=(left-loc_left)*(loc_right-right);
+
+        left=min(left,loc_left),right=max(right,loc_right);
+    }
+    cout<<res<<"\n";
+
+
 }
 
 int32_t main()
 {
-
- #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r" , stdin);
-    freopen("output.txt", "w", stdout);              // take input from the file and O/P on the console-- > more clarity!
-#endif
  
  ios_base::sync_with_stdio(false);
  cin.tie(NULL);
 
     int T = 1;
-    cin >> T;
+    // cin >> T;
     while (T--)
     {
         solve();
@@ -105,3 +77,4 @@ int32_t main()
     return 0;
 }
 
+    
