@@ -16,12 +16,15 @@
 #define mne(v)  *min_element(v.begin(),v.end())     // find min element in vector
 #define unq(v)  v.resize(distance(v.begin(), unique(v.begin(), v.end())));
 // make sure to sort before applying unique // else only consecutive duplicates would be removed 
+#define bin(x,y)  bitset<y>(x) 
 using namespace std;
-
 int MOD=1e9+7;      // Hardcoded, directly change from here for functions!
 
 
 
+void modadd(int &a , int b) {a=((a%MOD)+(b%MOD))%MOD;}
+void modsub(int &a , int b) {a=((a%MOD)-(b%MOD)+MOD)%MOD;}
+void modmul(int &a , int b) {a=((a%MOD)*(b%MOD))%MOD;}
 // ================================== take ip/op like vector,pairs directly!==================================
 template<typename typC,typename typD> istream &operator>>(istream &cin,pair<typC,typD> &a) { return cin>>a.first>>a.second; }
 template<typename typC> istream &operator>>(istream &cin,vector<typC> &a) { for (auto &x:a) cin>>x; return cin; }
@@ -37,18 +40,11 @@ void solve(){
     cin>>n;
     vi v(n);
     cin>>v;
-
     
-    // cout<<v<<"\n";
 }
 
 int32_t main()
 {
-
- #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r" , stdin);
-    freopen("output.txt", "w", stdout);              // take input from the file and O/P on the console-- > more clarity!
-#endif
  
  ios_base::sync_with_stdio(false);
  cin.tie(NULL);
@@ -62,3 +58,4 @@ int32_t main()
     return 0;
 }
 
+    
