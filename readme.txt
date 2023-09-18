@@ -5,5 +5,5 @@ I would keep updating the snippet to add more functionalities as I learn more st
 The setup which I use includes VSCODE + CPH Submit->(vscode and chrome extension)
 You can watch this video to fully understand how to use these snippets and be faster in CP - https://youtu.be/9eX2FJhxvzI
 
-
+[MAJOR UPDATIONS ON 18th Sep, 2023]: Please note the changes if you have been using this already as code such as primesnippets, segment tree might break due to these changes.
 Happy coding!
