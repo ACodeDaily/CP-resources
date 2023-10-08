@@ -7,3 +7,6 @@ You can watch this video to fully understand how to use these snippets and be fa
 
 
 Happy coding!
+
+
+TODO: the segment tree code can be improved. Do that when you get time. 
