@@ -8,5 +8,7 @@ You can watch this video to fully understand how to use these snippets and be fa
 
 Happy coding!
 
-
 TODO: the segment tree code can be improved. Do that when you get time. 
+=======
+[MAJOR UPDATIONS ON 18th Sep, 2023]: Please note the changes if you have been using this already as code such as primesnippets, segment tree might break due to these changes.
+Happy coding!
